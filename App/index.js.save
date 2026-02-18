@@ -1,0 +1,21 @@
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const process = require("process");
+
+const dbConfig = require("../config/db.config");
+
+const Tutorial = require("./tutorial.model");
+
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.dialect,
+  pool: dbConfig.pool,
+});
+
+const db = {};
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.tutorials = Tutorial(sequelize, Sequelize);
+
+export default db;

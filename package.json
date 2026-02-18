@@ -1,20 +1,33 @@
 {
   "name": "react-node-express-postgres-crud",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full NodeJS ExpressJS React JS PostgreSQL CRUD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-service": "docker compose -f docker/docker-compose.services.yml up -d --build --force-recreate && exit 0",
+    "stop-service": "docker compose -f docker/docker-compose.services.yml down --volumes",
+    "start-server": "node --watch server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "cesarefrediani@gmail.com",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "pg": "^8.18.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esplata/tutorials.git"
+  },
+  "bugs": {
+    "url": "https://github.com/esplata/tutorials/issues"
+  },
+  "homepage": "https://github.com/esplata/tutorials#readme"
 }

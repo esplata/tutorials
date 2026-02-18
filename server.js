@@ -1,9 +1,9 @@
-import express, { application } from "express";
-import cors from "cors";
-import db from "./App/models/index";
-import tutorialRouter from "./App/routes/tutorial.router";
+const express = require("express");
+const cors = require("cors");
+const db = require("./App/models/index");
+const tutorialRouter = require("./App/routes/tutorial.router");
 
-const app = epxress();
+const app = express();
 
 const corsOptions = {
   origin: "http://localhost:5173",

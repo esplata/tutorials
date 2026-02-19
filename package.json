@@ -2,7 +2,7 @@
   "name": "react-node-express-postgres-crud",
   "version": "1.0.0",
   "description": "Full NodeJS ExpressJS React JS PostgreSQL CRUD",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start-service": "docker compose -f docker/docker-compose.services.yml up -d --build --force-recreate && exit 0",
     "stop-service": "docker compose -f docker/docker-compose.services.yml down --volumes",

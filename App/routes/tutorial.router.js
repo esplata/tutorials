@@ -1,5 +1,5 @@
 const express = require("express");
-const tutorials = require("../controllers/tutorial.controller");
+const tutorials = require("../repositories/tutorial");
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 // Retrieve all tutorials
 router.get("/", async (req, res) => {
   try {
-    const allTutorials = tutorials.findAll();
+    const allTutorials = await tutorials.findAll();
     if (!allTutorials) {
       return res.status(404).send("No users found");
     }
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
 // Retrieve a single Tutorial
 router.get("/:id", async (req, res) => {
   try {
-    const oneTutorial = tutorials.findOne(req.params.id);
+    const oneTutorial = await tutorials.findOne(req.params.id);
     if (!oneTutorial) {
       return res.status(404).send("Tutorial not found");
     }
@@ -46,7 +46,7 @@ router.get("/:id", async (req, res) => {
 // Update a tutorial
 router.put("/:id", async (req, res) => {
   try {
-    const isActualized = tutorials.update(req.params.id, req.body);
+    const isActualized = await tutorials.update(req.params.id, req.body);
     if (isActualized) {
       res.json({ success: true, message: "Tutorial was updated successfully" });
     }
@@ -58,7 +58,7 @@ router.put("/:id", async (req, res) => {
 // Delete a Tutorial with id
 router.delete("/:id", async (req, res) => {
   try {
-    const isDeleted = tutorials.deleteOne(req.params.id);
+    const isDeleted = await tutorials.deleteOne(req.params.id);
     if (isDeleted) {
       res.json({ success: true, message: "Tutrial successfully deleted" });
     }
@@ -70,7 +70,7 @@ router.delete("/:id", async (req, res) => {
 // Delete All tutorials
 router.delete("/", async (req, res) => {
   try {
-    const allCleaned = tutorials.deleteAll();
+    const allCleaned = await tutorials.deleteAll();
     if (allCleaned) {
       res.json({
         success: true,
@@ -85,7 +85,7 @@ router.delete("/", async (req, res) => {
 // Find all published Tutorials
 router.get("/published", async (req, res) => {
   try {
-    const allPublished = tutorials.findAllPublished();
+    const allPublished = await tutorials.findAllPublished();
     if (!allPublished) {
       return res.status(404).send("There are no published tutorials");
     }

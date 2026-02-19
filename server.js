@@ -9,12 +9,12 @@ const corsOptions = {
   origin: "http://localhost:5173",
 };
 
-app.use(cors(corsOptions));
+//app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Simple route
-application.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Welcome to the tutorial Application." });
 });
 
@@ -23,9 +23,9 @@ application.get("/", (req, res) => {
 app.use("/api/tutorials", tutorialRouter);
 
 // Sync database
-db.sequelize.sync().then(() => {
-  console.log("Synced dv");
-});
+// db.sequelize.sync().then(() => {
+//   console.log("Synced dv");
+// });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
